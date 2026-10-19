@@ -176,7 +176,8 @@ const projects = [
     approach: "Plant groups and their distribution are reorganised into a legible comparative visual system.",
     outcome: "A compact research poster makes biodiversity patterns visible without separating data from place.",
     tags: ["Ecological legibility", "Biodiversity", "Data as landscape"],
-    cover: "网站优化素材/everglades.jpg"
+    cover: "网站优化素材/everglades.jpg",
+    extraImages: ["assets/projects/everglades.jpg"]
   },
   {
     id: "chinese-medicine",
@@ -442,7 +443,8 @@ function escapeHtml(value) {
 }
 
 function imageMarkup(path, label, eager = false) {
-  return `<img src="${mediaUrl(path)}" alt="${escapeHtml(label)}" loading="${eager ? "eager" : "lazy"}" decoding="async" />`;
+  const src = path.startsWith("assets/") ? `../${path}` : mediaUrl(path);
+  return `<img src="${src}" alt="${escapeHtml(label)}" loading="${eager ? "eager" : "lazy"}" decoding="async" />`;
 }
 
 function singleImageSection(title, path, project, eager = false) {
